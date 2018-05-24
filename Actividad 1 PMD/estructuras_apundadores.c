@@ -15,7 +15,8 @@ int main()
 	setvbuf(stdout, NULL, _IONBF, 0);
 
 	int opcion;
-	Alumno arreglo[30];
+	int i,j;
+	static Alumno arreglo[30];
 	Alumno* apuntador;
 	apuntador=&arreglo;
 
@@ -30,6 +31,7 @@ int main()
 	{
 		if(opcion==1)
 		{
+			j=1;
 			printf("Ingrese el expediente\n");
 			scanf("%d",&(*apuntador).expediente);
 			printf("Ingrese el nombre\n");
@@ -38,7 +40,24 @@ int main()
 			scanf("%s",(*apuntador).carrera);
 			printf("Ingrese la edad\n");
 			scanf("%d",&(*apuntador).edad);
+			apuntador+=j;
+			j++;
 		}
+		else if(opcion==2)
+		{
+			j=1;
+			for(i=0;i<30;i++)
+			{
+				printf("Expediente: %d",(*apuntador).expediente);
+				printf("Nombre: %s",(*apuntador).nombre);
+				printf("Carrera: %s",(*apuntador).carrera);
+				printf("Edad: %d",(*apuntador).edad);
+				apuntador+=j;
+				j++;
+			}
+		}
+		else
+			return 0;
 
 	}
 	system("pause");
